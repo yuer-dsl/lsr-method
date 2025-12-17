@@ -133,4 +133,80 @@ This rule is enforced through dependency injection.
 
 ---
 
-## What is b
+## What is being audited / 被审计的不是“代码质量”
+
+This audit focuses on:
+
+- Decision clarity  
+- Enforcement strength  
+- Auditability  
+- Ability to be challenged and disproven  
+
+Not on:
+
+- Code style
+- Performance
+- Framework preference
+
+---
+
+本次审计关注的是：
+
+- 决策是否明确  
+- 是否被代码强制执行  
+- 是否可被审计  
+- 是否经得起反驳  
+
+**不是**：
+
+- 代码风格
+- 性能
+- 技术选型偏好
+
+---
+
+## Files / 文件说明
+
+- `main.py`  
+  Minimal FastAPI service enforcing a single trusted `tenant_id` source.
+
+- `test_main.py`  
+  Pytest cases proving:
+  - correct tenant isolation
+  - failed cross-tenant access attempts
+
+---
+
+- `main.py`  
+  最小可运行 FastAPI 服务，强制 `tenant_id` 唯一来源。
+
+- `test_main.py`  
+  测试用例用于证明：
+  - 多租户隔离成立
+  - 越权访问失败
+
+---
+
+## Final Note / 最后说明
+
+This example is intentionally small.
+
+Its purpose is not to impress with complexity,  
+but to demonstrate **how a single engineering decision can be locked down and audited**.
+
+If you can’t clearly answer  
+“where does this value come from, and why can’t it come from elsewhere”  
+then the system is not auditable.
+
+---
+
+这个示例被刻意做得很小。
+
+目的不是炫技，  
+而是证明：**一个工程决策如何被彻底锁死并可被审计**。
+
+如果你无法清楚回答：  
+“这个值来自哪里？为什么不能来自别处？”  
+那这个系统就不具备可审计性。
+
+---
